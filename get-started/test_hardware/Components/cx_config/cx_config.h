@@ -1,5 +1,5 @@
-#ifndef _I2C_SCANNER_H
-#define _I2C_SCANNER_H
+#ifndef _CX_CONFIG_H
+#define _CX_CONFIG_H
 
 void i2cInit(void);
 void uart2Init(void);

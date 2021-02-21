@@ -6,7 +6,7 @@
 #include "freertos/task.h"
 #include "driver/i2c.h"
 #include "esp_err.h"
-#include "i2c_scanner.h"
+#include "cx_config.h"
 
 /// This is a test string
 #define PIN GPIO_NUM_2 ///< onboard Led

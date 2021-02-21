@@ -103,7 +103,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/unity/cmake_install.cmake")
   include("C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/wifi_provisioning/cmake_install.cmake")
   include("C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/main/cmake_install.cmake")
-  include("C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/cmake_install.cmake")
+  include("C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/cx_config/cmake_install.cmake")
 
 endif()
 

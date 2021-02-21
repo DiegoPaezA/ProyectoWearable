@@ -1303,7 +1303,7 @@ rule CXX_STATIC_LIBRARY_LINKER____idf_main
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER____idf_i2c_scanner
+rule C_COMPILER____idf_cx_config
   depfile = $DEP_FILE
   deps = gcc
   command = ccache C:\esp\esp-tools\.espressif\tools\xtensa-esp32-elf\esp-2020r2-8.2.0\xtensa-esp32-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
@@ -1313,7 +1313,7 @@ rule C_COMPILER____idf_i2c_scanner
 #############################################
 # Rule for linking CXX static library.
 
-rule CXX_STATIC_LIBRARY_LINKER____idf_i2c_scanner
+rule CXX_STATIC_LIBRARY_LINKER____idf_cx_config
   command = cmd.exe /C "$PRE_LINK && C:\esp\esp-tools\.espressif\tools\cmake\3.13.4\bin\cmake.exe -E remove $TARGET_FILE && C:\esp\esp-tools\.espressif\tools\xtensa-esp32-elf\esp-2020r2-8.2.0\xtensa-esp32-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\esp\esp-tools\.espressif\tools\xtensa-esp32-elf\esp-2020r2-8.2.0\xtensa-esp32-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
