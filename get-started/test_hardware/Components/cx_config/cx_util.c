@@ -1,3 +1,16 @@
+/**
+ * @file doxygen_c.h
+ * @author My Self
+ * @date 9 Sep 2012
+ * @brief File containing example of doxygen usage for quick reference.
+ *
+ * Here typically goes a more extensive explanation of what the header
+ * defines. Doxygens tags are words preceeded by either a backslash @\
+ * or by an at symbol @@.
+ * @see http://www.stack.nl/~dimitri/doxygen/docblocks.html
+ * @see http://www.stack.nl/~dimitri/doxygen/commands.html
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include "driver/gpio.h"
@@ -7,6 +20,8 @@
 #include "esp_err.h"
 #include "driver/uart.h"
 #include "string.h"
+
+#include <stdio.h>
 
 static const int RX_BUF_SIZE = 1024;
 
@@ -18,7 +33,7 @@ static const int RX_BUF_SIZE = 1024;
  *
  * Detailed explanation.
  */
-int send_data(const char *data)
+int uart2Send(const char *data)
 {
 	const int len = strlen(data);
 	const int txBytes = uart_write_bytes(UART_NUM_2, data, len);
@@ -27,8 +42,9 @@ int send_data(const char *data)
 }
 
 /**
- * Function to scan i2c devices onboard
- * 
+ * @brief Function to scan i2c devices onboard
+ *
+ * Detailed explanation.
  */
 void i2cScan(void)
 {
@@ -46,7 +62,7 @@ void i2cScan(void)
 			printf("-> found device with address 0x%02x\r\n", address);
 
 			sprintf(data, "-> found device with address 0x%02x\r\n", address); //mueve el valor de sensorReading a data
-			send_data(data);
+			uart2Send(data);
 			devices_found++;
 		}
 		i2c_cmd_link_delete(cmd);
@@ -54,13 +70,17 @@ void i2cScan(void)
 	if (devices_found == 0)
 	{
 		printf("\r\n-> no devices found\r\n");
-		send_data("\r\n-> no devices found\r\n");
+		uart2Send("\r\n-> no devices found\r\n");
 	}
 
 	printf("\r...scan completed!\r\n");
-	send_data("\r...scan completed!\r\n");
+	uart2Send("\r...scan completed!\r\n");
 }
-
+/**
+ * @brief Function to configure i2c port
+ *
+ * Detailed explanation.
+ */
 void i2cInit(void)
 {
 	//configure the i2c controller 0 in master mode, normal speed

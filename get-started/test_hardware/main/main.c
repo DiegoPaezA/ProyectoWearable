@@ -1,19 +1,28 @@
-/// @file main.c
+/**
+ * @file doxygen_c.h
+ * @author My Self
+ * @date 9 Sep 2012
+ * @brief File containing example of doxygen usage for quick reference.
+ *
+ * Here typically goes a more extensive explanation of what the header
+ * defines. Doxygens tags are words preceeded by either a backslash @\
+ * or by an at symbol @@.
+ * @see http://www.stack.nl/~dimitri/doxygen/docblocks.html
+ * @see http://www.stack.nl/~dimitri/doxygen/commands.html
+ */
 #include <stdio.h>
-
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "driver/i2c.h"
-#include "esp_err.h"
-#include "cx_config.h"
+#include "cx_util.h"
 
 /// This is a test string
 #define PIN GPIO_NUM_2 ///< onboard Led
 
 /**
- * Task for test onboard Led (pin_2).
- * 
+ * @brief Task for test onboard Led (pin_2).
+ *
+ * Detailed explanation.
  */
 void blinky(void *params)
 {
@@ -29,13 +38,12 @@ void blinky(void *params)
 }
 
 /**
- * Task to scan i2c devices connected onboard
- * 
+ * @brief Task to scan i2c devices connected onboard
+ *
+ * Detailed explanation.
  */
 void i2cloop(void *pvParameter)
 {
-
-
 	while (1)
 	{
 		i2cScan();
@@ -44,9 +52,10 @@ void i2cloop(void *pvParameter)
 }
 
 /**
- * main function
- * 
-*/
+ * @brief Main Function
+ *
+ * Detailed explanation.
+ */
 void app_main(void)
 {
 	printf("Hello world!\n");
