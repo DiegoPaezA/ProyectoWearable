@@ -1,14 +1,12 @@
 /**
- * @file doxygen_c.h
- * @author My Self
- * @date 9 Sep 2012
- * @brief File containing example of doxygen usage for quick reference.
+ * @file main.c
+ * @author Diego R. Páez
+ * @date 21 Feb 2021
+ * @brief File containing code to test the hardware on project wearable board.
  *
- * Here typically goes a more extensive explanation of what the header
- * defines. Doxygens tags are words preceeded by either a backslash @\
- * or by an at symbol @@.
- * @see http://www.stack.nl/~dimitri/doxygen/docblocks.html
- * @see http://www.stack.nl/~dimitri/doxygen/commands.html
+ * 
+ * @see 
+ * @see 
  */
 #include <stdio.h>
 #include "driver/gpio.h"
@@ -58,11 +56,10 @@ void i2cloop(void *pvParameter)
  */
 void app_main(void)
 {
-	printf("Hello world!\n");
+	printf("*** Test Hardware - Proyecto Wearable v0.1 ***\n");
+
 	i2cInit();
 	uart2Init();
-
-
 	xTaskCreate(&blinky, "blink led", 2048, NULL, 2, NULL);
 	xTaskCreate(&i2cloop, "i2c scan loop", 2048, NULL, 2, NULL);
 }

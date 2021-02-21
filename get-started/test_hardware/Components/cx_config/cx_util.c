@@ -1,14 +1,12 @@
 /**
- * @file doxygen_c.h
- * @author My Self
- * @date 9 Sep 2012
- * @brief File containing example of doxygen usage for quick reference.
+ * @file cx_util.c
+ * @author Diego R. Páez
+ * @date 21 Feb 2021
+ * @brief File containing utilities to apply communications on main program
  *
- * Here typically goes a more extensive explanation of what the header
- * defines. Doxygens tags are words preceeded by either a backslash @\
- * or by an at symbol @@.
- * @see http://www.stack.nl/~dimitri/doxygen/docblocks.html
- * @see http://www.stack.nl/~dimitri/doxygen/commands.html
+
+ * @see 
+ * @see 
  */
 
 #include <stdio.h>

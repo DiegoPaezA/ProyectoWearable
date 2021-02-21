@@ -11,6 +11,7 @@
     "stdio.h": "c",
     "i2c_scanner.h": "c",
     "string.h": "c",
-    "task.h": "c"
+    "task.h": "c",
+    "freertos.h": "c"
   }
 }
