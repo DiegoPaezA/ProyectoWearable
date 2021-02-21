@@ -8,6 +8,23 @@
 #include "driver/uart.h"
 #include "string.h"
 
+static const int RX_BUF_SIZE = 1024;
+
+#define TXD_PIN (GPIO_NUM_17)
+#define RXD_PIN (GPIO_NUM_16)
+
+/**
+ * @brief send data over uart2 serial port
+ *
+ * Detailed explanation.
+ */
+int send_data(const char *data)
+{
+	const int len = strlen(data);
+	const int txBytes = uart_write_bytes(UART_NUM_2, data, len);
+
+	return txBytes;
+}
 
 /**
  * Function to scan i2c devices onboard
@@ -15,7 +32,8 @@
  */
 void i2cScan(void)
 {
-    int devices_found = 0;
+	int devices_found = 0;
+	char data[50];
 	for (int address = 1; address < 127; address++)
 	{
 		// create and execute the command link
@@ -26,6 +44,9 @@ void i2cScan(void)
 		if (i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_RATE_MS) == ESP_OK)
 		{
 			printf("-> found device with address 0x%02x\r\n", address);
+
+			sprintf(data, "-> found device with address 0x%02x\r\n", address); //mueve el valor de sensorReading a data
+			send_data(data);
 			devices_found++;
 		}
 		i2c_cmd_link_delete(cmd);
@@ -33,27 +54,29 @@ void i2cScan(void)
 	if (devices_found == 0)
 	{
 		printf("\r\n-> no devices found\r\n");
+		send_data("\r\n-> no devices found\r\n");
 	}
 
 	printf("\r...scan completed!\r\n");
+	send_data("\r...scan completed!\r\n");
 }
 
 void i2cInit(void)
 {
-    //configure the i2c controller 0 in master mode, normal speed
-    i2c_config_t conf;
-    conf.mode = I2C_MODE_MASTER;
-    conf.sda_io_num = 21;
-    conf.scl_io_num = 22;
-    conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
-    conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
-    conf.master.clk_speed = 100000;
-    ESP_ERROR_CHECK(i2c_param_config(I2C_NUM_0, &conf));
-    printf("- i2c controller configured\r\n");
+	//configure the i2c controller 0 in master mode, normal speed
+	i2c_config_t conf;
+	conf.mode = I2C_MODE_MASTER;
+	conf.sda_io_num = 21;
+	conf.scl_io_num = 22;
+	conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
+	conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
+	conf.master.clk_speed = 100000;
+	ESP_ERROR_CHECK(i2c_param_config(I2C_NUM_0, &conf));
+	printf("- i2c controller configured\r\n");
 
-    // install the driver
-    ESP_ERROR_CHECK(i2c_driver_install(I2C_NUM_0, I2C_MODE_MASTER, 0, 0, 0));
-    printf("- i2c driver installed\r\n\r\n");
+	// install the driver
+	ESP_ERROR_CHECK(i2c_driver_install(I2C_NUM_0, I2C_MODE_MASTER, 0, 0, 0));
+	printf("- i2c driver installed\r\n\r\n");
 }
 
 /**
@@ -61,16 +84,17 @@ void i2cInit(void)
  *
  * Detailed explanation.
  */
-void uart_config(void) {
-    const uart_config_t uart_config = {
-        .baud_rate = 115200,
-        .data_bits = UART_DATA_8_BITS,
-        .parity = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-    };
-    // We won't use a buffer for sending data.
-    uart_driver_install(UART_NUM_2, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
-    uart_param_config(UART_NUM_2, &uart_config);
-    uart_set_pin(UART_NUM_2, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+void uart2Init(void)
+{
+	const uart_config_t uart_config = {
+		.baud_rate = 115200,
+		.data_bits = UART_DATA_8_BITS,
+		.parity = UART_PARITY_DISABLE,
+		.stop_bits = UART_STOP_BITS_1,
+		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+	};
+	// We won't use a buffer for sending data.
+	uart_driver_install(UART_NUM_2, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+	uart_param_config(UART_NUM_2, &uart_config);
+	uart_set_pin(UART_NUM_2, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 }

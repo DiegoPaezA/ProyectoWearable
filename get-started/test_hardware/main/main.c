@@ -51,6 +51,7 @@ void app_main(void)
 {
 	printf("Hello world!\n");
 	i2cInit();
+	uart2Init();
 
 
 	xTaskCreate(&blinky, "blink led", 2048, NULL, 2, NULL);
