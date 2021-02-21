@@ -1,8 +1,12 @@
+#include <stdio.h>
+#include <string.h>
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/i2c.h"
 #include "esp_err.h"
+#include "driver/uart.h"
+#include "string.h"
 
 
 /**
@@ -50,4 +54,23 @@ void i2cInit(void)
     // install the driver
     ESP_ERROR_CHECK(i2c_driver_install(I2C_NUM_0, I2C_MODE_MASTER, 0, 0, 0));
     printf("- i2c driver installed\r\n\r\n");
+}
+
+/**
+ * @brief Function to configure uart2 port
+ *
+ * Detailed explanation.
+ */
+void uart_config(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = 115200,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+    };
+    // We won't use a buffer for sending data.
+    uart_driver_install(UART_NUM_2, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM_2, &uart_config);
+    uart_set_pin(UART_NUM_2, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 }
