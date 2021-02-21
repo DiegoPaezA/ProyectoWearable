@@ -532,3 +532,10 @@ C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/main/CMakeFiles
 C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/main/CMakeFiles/rebuild_cache.dir
 C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/main/CMakeFiles/list_install_components.dir
 C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/main/CMakeFiles/install/strip.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/__idf_i2c_scanner.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/install/local.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/install.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/edit_cache.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/rebuild_cache.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/list_install_components.dir
+C:/esp/Proyecto_Wearable/get-started/test_hardware/build/esp-idf/i2c_scanner/CMakeFiles/install/strip.dir
