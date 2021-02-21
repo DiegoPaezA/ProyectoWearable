@@ -11,7 +11,7 @@
       "miDebuggerPath": "C:/esp/esp-tools/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb.exe",
       "cwd": "${workspaceFolder}/build",
       //change the name of the elf file as required
-      "program": "C:/Users/diego/Documents/Develop/Proyecto_Wearable/get-started/test_hardware/build/test_hardware.elf",
+      "program": "C:/esp/Proyecto_Wearable/Proyecto_Wearable/get-started/test_hardware/build/test_hardware.elf",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -19,7 +19,7 @@
           "ignoreFailures": true
         },
         {
-          "text": "file 'C:/Users/diego/Documents/Develop/Proyecto_Wearable/get-started/test_hardware/build/test_hardware.elf'"
+          "text": "file 'C:/esp/Proyecto_Wearable/Proyecto_Wearable/get-started/test_hardware/build/test_hardware.elf'"
         },
         {
           "text": "target remote 127.0.0.1:3333"
