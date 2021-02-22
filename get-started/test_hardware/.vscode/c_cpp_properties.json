@@ -73,7 +73,9 @@
                 "C:/esp/esp-tools/.espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/xtensa-esp32-elf/include",
                 "${workspaceFolder}/Components/i2c_scanner",
                 "C:/esp/esp-idf/components/esp_ringbuf/include",
-                "${workspaceFolder}/Components/cx_config"
+                "${workspaceFolder}/Components/cx_config",
+                "C:/ESP/PROYECTO_WEARABLE/GET-STARTED/TEST_HARDWARE/COMPONENTS/CX_UTIL",
+                "C:/ESP/PROYECTO_WEARABLE/GET-STARTED/TEST_HARDWARE/COMPONENTS/CX_UTIL"
             ],
             "defines": [],
             "cStandard": "c11",
